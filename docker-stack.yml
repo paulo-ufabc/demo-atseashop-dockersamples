@@ -36,16 +36,16 @@ services:
       - back-tier
       - payment
     deploy:
-      replicas: 2
+      replicas: 1
       update_config:
-        parallelism: 2
+        parallelism: 1
         failure_action: rollback
       placement:
         constraints:
           - 'node.role == worker'
       restart_policy:
         condition: on-failure
-        delay: 5s
+        delay: 3s
         max_attempts: 3
         window: 120s
     secrets:
